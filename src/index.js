@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-function Square (props){	  
+function Square (props){
 	return (
 		<button className="square" onClick={props.onClick}>
 		  {props.value}
 		</button>
 	  );
 }
-  
+
 class Board extends React.Component {
 	constructor(props) {
 		super(props)
@@ -46,7 +46,7 @@ class Board extends React.Component {
 				break;
 			case 'Tie':
 				status = winner;
-				break
+				break;
 			default:
 				status = 'Next player: ' + (this.state.xIsNext? 'X' : 'O');
 				break;
@@ -109,14 +109,10 @@ function calculateWinner(squares) {
 	}
 	let tie = 0
 	for(let square of squares) {
-		console.log(square)
 		tie += square==null ? 0 : 1;
-		console.log(tie)
 	}
 	return tie===9 ? 'Tie' : null;
   }
-
-// ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
